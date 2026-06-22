@@ -1,23 +1,16 @@
 function [p_fault, posterior_hypothesis, fault_relative_posterior, diagnostics] = ...
     PFHR_Posterior_fault_hypotheses_reweighting(pap_subset, subset_log_evidence, use_posterior, varargin)
-%PFHR_POSTERIOR_FAULT_HYPOTHESES_REWEIGHTING Reweight MHSS fault hypotheses.
-%
-% Standalone posterior risk redistribution for MHSS/ARAIM protection-level
-% calculation. It updates relative monitored-fault weights using current
-% subset evidence while preserving total monitored-fault risk mass.
 %
 % Inputs:
 %     pap_subset          - Prior hypothesis weights. Element 1 is H_0
 %                           no-fault; elements 2:end are monitored faults.
-%     subset_log_evidence - Same-size log predictive evidence vector,
-%                           log p(z_k^(j) | H_j, z_{1:k-1}).
+%     subset_log_evidence - Same-size log predictive evidence vector.
+
 %     use_posterior       - 1 enables redistribution; 0 keeps prior weights.
-%
+
 
 % Outputs:
-%     p_fault              - PL risk weights. p_fault(1) is fixed to the
-%                            no-fault coefficient; p_fault(2:end) may be
-%                            posterior-redistributed.
+%     p_fault              - PL risk weights.
 %     posterior_hypothesis - Normalized posterior over all valid hypotheses.
 %     fault_relative_posterior
 %                          - Conditional posterior over monitored faults.
