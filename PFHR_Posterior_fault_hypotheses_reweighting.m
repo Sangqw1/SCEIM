@@ -2,11 +2,8 @@ function [p_fault, posterior_hypothesis, fault_relative_posterior, diagnostics] 
     PFHR_Posterior_fault_hypotheses_reweighting(pap_subset, subset_log_evidence, use_posterior, varargin)
 %
 % Inputs:
-%     pap_subset          - Prior hypothesis weights. Element 1 is H_0
-%                           no-fault; elements 2:end are monitored faults.
+%     pap_subset          - Prior hypothesis weights.
 %     subset_log_evidence - Same-size log predictive evidence vector.
-
-%     use_posterior       - 1 enables redistribution; 0 keeps prior weights.
 
 
 % Outputs:
@@ -15,7 +12,6 @@ function [p_fault, posterior_hypothesis, fault_relative_posterior, diagnostics] 
 %     fault_relative_posterior
 %                          - Conditional posterior over monitored faults.
 %     diagnostics          - Valid masks, risk-mass checks, status reason.
-%
 
 opts = local_parse_options(varargin{:});
 
@@ -97,7 +93,6 @@ if isempty(valid_fault_idx)
     return;
 end
 
-% Eq. (36): posterior weight inside monitored fault event M.
 log_weight_fault = log(pap_col(valid_fault_idx)) + log_like_col(valid_fault_idx);
 alpha_fault = local_softmax_from_log_weights(log_weight_fault);
 if ~any(alpha_fault > 0)
@@ -111,7 +106,6 @@ end
 prior_fault_mass = sum(pap_col(valid_fault_idx));
 fault_relative_col(valid_fault_idx) = alpha_fault;
 
-% Eq. (40): posterior fault hypothesis weight with total monitored risk fixed.
 p_fault_col(valid_fault_idx) = prior_fault_mass .* alpha_fault;
 p_fault_col(1) = opts.no_fault_pl_coefficient;
 
