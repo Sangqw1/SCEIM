@@ -1,11 +1,4 @@
 function [x_post, P_post, out] = BFPA_Bayes_factor_prior_adaptation(x_pred, P_pred, H, z, R_nominal, varargin)
-%BFPA_BAYES_FACTOR_PRIOR_ADAPTATION GSTM update with BFPA initialization.
-%
-% Model:
-%     p(z_kj | x_k, pi_kj) =
-%         pi_kj*N(z_kj; h_kj*x_k, R_kj)
-%       + (1-pi_kj)*St(z_kj; h_kj*x_k, R_kj, nu_k)
-%
 % Inputs:
 %     x_pred    - Predicted state, n_x x 1.
 %     P_pred    - Predicted covariance, n_x x n_x.
