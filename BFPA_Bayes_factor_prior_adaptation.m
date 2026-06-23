@@ -196,8 +196,6 @@ opts.regularization = max(double(opts.regularization), eps);
 end
 
 function [a0, b0, BF_kj, log_BF_kj] = local_initialize_bfpa_prior(u_kj, nu_t, prior_strength)
-% Eq. (30)-(32): BFPA initializes Beta(a0,b0) from the Gaussian-vs-Student
-% Bayes factor of the normalized innovation u_kj.
 u_kj = u_kj(:);
 log_BF_kj = 0.5 * log(nu_t / 2) + gammaln(nu_t / 2) - gammaln((nu_t + 1) / 2) ...
     - 0.5 * (u_kj .^ 2) ...
