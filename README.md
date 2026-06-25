@@ -1,6 +1,6 @@
 # SCEIM
 
-This repository contains two standalone MATLAB functions for robust GNSS/INS integrity monitoring.
+This repository contains two MATLAB functions for State Consistency Evidence-Based Integrity Monitoring for Robust GNSS/INS Integrated Positioning.
 
 ## Files
 
